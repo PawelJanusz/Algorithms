@@ -46,7 +46,7 @@ public class StringChallenge {
          return result;
     }
 
-    public static String sumValues (String[] array){
+    public static String sumValues (String[] array) {
 
         String[] splitFirst = array[0].split("\\D");
         String[] splitSecond = array[1].split("\\D");
@@ -54,22 +54,23 @@ public class StringChallenge {
         int[] result = {array.length};
 
         String finish = "";
-         for (int i=1; i<splitFirst.length; i++) {
-             for (int j = 1; j < splitSecond.length; j++) {
-                 for (int k = 0; k < result.length; k++) {
-                     if (splitFirst.length == splitSecond.length && i == j) {
+        String end = "";
+        for (int i = 1; i < splitFirst.length; i++) {
+            for (int j = 1; j < splitSecond.length; j++) {
+                for (int k = 0; k < result.length; k++) {
+                    if (splitFirst.length == splitSecond.length && i == j) {
 
-                         result[k] = Integer.parseInt(splitFirst[i]) + Integer.parseInt(splitSecond[j]);
+                        result[k] = Integer.parseInt(splitFirst[i]) + Integer.parseInt(splitSecond[j]);
 
-                         finish = finish.concat(result[k]+",");
+                        finish = finish.concat(result[k] + ",");
+                        end = finish.substring(0, finish.length() - 1);
+                    }
+                }
+            }
+        }
+            return end;
 
-                     }
-                 }
-             }
-         }
-         return finish;
-
-    }
+        }
 
 
     public static void main(String[] args) {
@@ -79,8 +80,6 @@ public class StringChallenge {
 //        String word = "[1,2,3,4,5]";
 //
 //        String[] splitWord = word.split("[\\D]");
-//
-//        System.out.println(Arrays.toString(splitWord));
 
     }
 }
