@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Formatter;
+
 public class StringChallenge {
 
     //method have to delete letters "M" and add letter before
@@ -43,9 +46,41 @@ public class StringChallenge {
          return result;
     }
 
-    public static void main(String[] args) {
+    public static String sumValues (String[] array){
 
-        System.out.println(deleteLetters("asMkydNklM"));
-        System.out.println(changeAndCountLetters("cabacbcababc"));
+        String[] splitFirst = array[0].split("\\D");
+        String[] splitSecond = array[1].split("\\D");
+
+        int[] result = {array.length};
+
+        String finish = "";
+         for (int i=1; i<splitFirst.length; i++) {
+             for (int j = 1; j < splitSecond.length; j++) {
+                 for (int k = 0; k < result.length; k++) {
+                     if (splitFirst.length == splitSecond.length && i == j) {
+
+                         result[k] = Integer.parseInt(splitFirst[i]) + Integer.parseInt(splitSecond[j]);
+
+                         finish = finish.concat(result[k]+",");
+
+                     }
+                 }
+             }
+         }
+         return finish;
+
+    }
+
+
+    public static void main(String[] args) {
+         String[] array = {"[1,2]", "[3,4]"};
+        System.out.println(sumValues(array));
+
+//        String word = "[1,2,3,4,5]";
+//
+//        String[] splitWord = word.split("[\\D]");
+//
+//        System.out.println(Arrays.toString(splitWord));
+
     }
 }
