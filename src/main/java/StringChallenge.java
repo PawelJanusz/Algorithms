@@ -1,3 +1,4 @@
+
 public class StringChallenge {
 
     //method have to delete letters "M" and add letter before
@@ -60,13 +61,12 @@ public class StringChallenge {
     //- if array = ["[3, 2, 1]", "[6, 5, 4]"], the function should return: "9,7,5".
     //- if array = ["[4, 5]", "[3, 5, 8, 9]"], the function should return: "7,10,8,9".
     public static String sumStringValues (String[] input) {
-
         String[] splitFirst = input[0].split("\\D");
         String[] splitSecond = input[1].split("\\D");
 
         int[] result = {input.length};
 
-        String finish = "";
+        String tmp = "";
         String end = "";
         for (int i = 1; i < splitFirst.length; i++) {
             for (int j = 1; j < splitSecond.length; j++) {
@@ -78,8 +78,8 @@ public class StringChallenge {
                         catch (NumberFormatException ex){
                             ex.printStackTrace();
                         }
-                        finish = finish.concat(result[k] + ",");
-                        end = finish.substring(0, finish.length() - 1);
+                        tmp = tmp.concat(result[k] + ",");
+                        end = tmp.substring(0, tmp.length() - 1);
                     }
                     if (input[1].length() > input[0].length() && i == j){
                         try {
@@ -88,8 +88,8 @@ public class StringChallenge {
                         catch (NumberFormatException ex){
                             ex.printStackTrace();
                         }
-                        finish = finish.concat(result[k] + ",");
-                        end = finish.substring(0, finish.length() - 1)
+                        tmp = tmp.concat(result[k] + ",");
+                        end = tmp.substring(0, tmp.length() - 1)
                                     .concat(input[1].substring(input[0].length()-1, input[1].length()-1));
 
                     }
@@ -100,14 +100,58 @@ public class StringChallenge {
 
         }
 
+        public static int movementsGrid(String input){
+         String[] split = input.split("\\W");
+
+         final int FINISH = 7;
+         int x = 1;
+         int y = 1;
+         int xResult;
+         int yResult;
+         int movementsAmount;
+
+         for (int i=1; i<split.length; i++){
+            if (split[i].equals("w")){
+                x += 1;
+            }
+            if (split[i].equals("s")){
+                x -= 1;
+            }
+            if (split[i].equals("d")){
+                y += 1;
+            }
+            if (split[i].equals("a")){
+                y -= 1;
+            }
+         }
+         xResult = FINISH - x ;
+         yResult = FINISH - y ;
+
+         movementsAmount = xResult + yResult;
+
+            System.out.println("Pozycja " + x + " " + y);
+            System.out.println("Ile zostało ruchów " + xResult + " " + yResult);
+            return movementsAmount;
+        }
+
 
     public static void main(String[] args) {
-         String[] array = {"[3,2,1]", "[6,5,4,100,200,300]"};
-        System.out.println(sumStringValues(array));
+        System.out.println(movementsGrid("(d,d,d,w,w,a)"));
 
-//        String word = "[1,2,3,4,5]";
+
+//        List<StringBuilder> names = new ArrayList<>();
+//        names.add(new StringBuilder("Tom"));
+//        names.add(new StringBuilder("Joe"));
+//        names.stream().forEach(s -> s.append("Hello"));
+//        names.stream().forEach(s -> {s.insert(3, ",");
+//            System.out.print(s);});
+
+//        A a = new A("Bye");
+//        Immutable im = new Immutable(a);
+//        System.out.print(im);
 //
-//        String[] splitWord = word.split("[\\D]");
+//        a.setA(" bye");
+//        System.out.print(im);
 
     }
 }
